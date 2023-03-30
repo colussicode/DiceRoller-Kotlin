@@ -13,16 +13,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonRoll.setOnClickListener {
-            rollDice()
+            showResultOnScreen()
             Toast.makeText(this, "Dice Rolled!", Toast.LENGTH_SHORT).show()
         }
     }
-    private fun rollDice() {
-        val dice = Dice(6).roll()
-        val secondDice = Dice(10).roll()
+    private fun rollFirstDice() : Int {
+        return Dice(6).roll()
+    }
+    private fun rollSecondDice(): Int {
+        return Dice(10).roll()
+    }
 
-        binding.textViewSecond.text = dice.toString()
-        binding.textViewFirst.text = secondDice.toString()
+    private fun showResultOnScreen() {
+        val firstDiceResult = rollFirstDice()
+        val secondDiceResult = rollSecondDice()
+
+        binding.textViewFirst.text = firstDiceResult.toString()
+        binding.textViewSecond.text = secondDiceResult.toString()
     }
 }
 class Dice(private val numSides: Int) {
