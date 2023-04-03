@@ -13,13 +13,16 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnRoll.setOnClickListener { showResultOnScreen() }
     }
-    private fun rollDice() : Int {
+    private fun rollFirstDice() : Int {
         return Dice(6).roll()
     }
 
+    private fun rollSecondDice() : Int {
+        return Dice(6).roll()
+    }
 
     private fun showResultOnScreen() {
-        val result = when(rollDice()) {
+        val resultFirstDice = when(rollFirstDice()) {
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
             3 -> R.drawable.dice_3
@@ -27,7 +30,18 @@ class MainActivity : AppCompatActivity() {
             5 -> R.drawable.dice_5
             else -> R.drawable.dice_6
         }
-        binding.imgFirstDice.setImageResource(result)
+
+        val resultSecondDice = when(rollSecondDice()) {
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else -> R.drawable.dice_6
+        }
+
+        binding.imgFirstDice.setImageResource(resultFirstDice)
+        binding.imgSecondDice.setImageResource(resultSecondDice)
     }
 }
 class Dice(private val numSides: Int) {

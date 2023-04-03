@@ -12,9 +12,20 @@
         android:layout_height="120dp"
         android:contentDescription="@string/first_dice"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/img_secondDice"
+        app:srcCompat="@drawable/dice_1" />
+
+    <ImageView
+        android:id="@+id/img_secondDice"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:contentDescription="@string/first_dice"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/img_firstDice"
         app:srcCompat="@drawable/dice_1" />
 
 
