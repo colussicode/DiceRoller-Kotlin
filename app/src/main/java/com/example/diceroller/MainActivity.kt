@@ -2,7 +2,6 @@ package com.example.diceroller
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.example.diceroller.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private val binding by lazy {
@@ -12,24 +11,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.buttonRoll.setOnClickListener {
-            showResultOnScreen()
-            Toast.makeText(this, "Dice Rolled!", Toast.LENGTH_SHORT).show()
-        }
+        binding.btnRoll.setOnClickListener { showResultOnScreen() }
     }
-    private fun rollFirstDice() : Int {
+    private fun rollDice() : Int {
         return Dice(6).roll()
     }
-    private fun rollSecondDice(): Int {
-        return Dice(10).roll()
-    }
+
 
     private fun showResultOnScreen() {
-        val firstDiceResult = rollFirstDice()
-        val secondDiceResult = rollSecondDice()
-
-        binding.textViewFirst.text = firstDiceResult.toString()
-        binding.textViewSecond.text = secondDiceResult.toString()
+        val result = when(rollDice()) {
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else -> R.drawable.dice_6
+        }
+        binding.imgFirstDice.setImageResource(result)
     }
 }
 class Dice(private val numSides: Int) {
